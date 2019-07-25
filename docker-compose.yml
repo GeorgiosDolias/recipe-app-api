@@ -1,0 +1,19 @@
+# Contains all the configuration of the services that make app the application
+
+#Version of docker compose
+version: "3"
+
+#Service for python django framework
+services:
+  app:
+    build:
+      # . declares the current configuration
+      context: .
+    ports:
+      - "8000:8000"
+    # volumes allows us to automatically update any change to the docker image  
+    volumes:
+      - ./app:/app
+    # command that runs the application in the docker container
+    command: >
+     sh -c "python manage.py runserver 0.0.0.0:8000"
