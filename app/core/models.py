@@ -74,10 +74,11 @@ class Recipe(models.Model):
     time_minutes = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     link = models.CharField(max_length=255, blank=True)
-    # ManyToMany allows objects of Recipe class to be involved 
-    #with 'many' objects of other classess
+    """ManyToMany allows objects of Recipe class to be involved
+    with 'many' objects of other classess"""
     ingredients = models.ManyToManyField('Ingredient')
     tags = models.ManyToManyField('Tag')
 
+    # Why do we put underscores in the name of this function???
     def __str__(self):
         return self.title
